@@ -43,7 +43,24 @@ def modifyTodo():
 	print("4) due date only")
 
 def deleteTodo():
-	print("Not yet implemented...")
+	if len(todo) == 0:
+		print("You have no todos, please add one before calling del")
+	else:
+		lookup = input("Do you need to look-up the indices of your tasks [y/N]? ")
+		if lookup == "y":
+			print("Here are your tasks:")
+			for i in range(len(todo)):
+				print(f"{i} {todo[i]}")
+		index = input("\nEnter the number of the task you wish to delete: ")
+		try:
+			index = int(index)
+		except:
+			print("The value you entered was not a number!")
+			return
+		itemDeleted = todo[int(index)]
+		todo.remove(itemDeleted)
+		print(f"This task was deleted:")
+		print(itemDeleted)
 
 def overviewTodo():
 	print("A todo is something you need to be reminded of!")

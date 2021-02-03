@@ -10,6 +10,15 @@ dictCmds = {
 		"q": ("NaF", "quits program"),
 	    }
 
+# some ANSI escape sequences for adding color to our terminal
+class fontcolors:
+    Purple = '\033[95m'
+    Blue = '\033[94m'
+    Green = '\033[92m'
+    Red = '\033[91m'
+    End = '\033[0m'
+
+
 def setupTodo():
 	"""
 	"""
@@ -153,16 +162,23 @@ def isTodoEmpty():
 	else:
 		False
 
+def hello():
+	"""
+	a chat feature here would be cool
+	"""
+	print("Hello!")
+	print("I hope you are enjoying this program so far!")
+
 if True:
 	"""
 	where the magic happens :)
 	"""
 	running = True
-	print("Welcome to calendar!\n")
+	print(f"{fontcolors.Purple}Welcome to calendar!{fontcolors.End}\n")
 	overviewTodo()
 
 	while running:
-		command = input("\nPlease enter a command: ")
+		command = input(f"\n{fontcolors.Blue}Please enter a command: {fontcolors.End}")
 		if command == "q":
 		    running = False
 		    print("Thank you for running calendar!\n")
@@ -176,8 +192,10 @@ if True:
 		    listTodo()
 		elif command == "mod":
 			modifyTodo()
+		elif command == "hello":
+			hello()
 		else:
-		    print("That is not a recognized command, press q if you wish to quit!")
+		    print(f"{fontcolors.Red}That is not a recognized command, press q if you wish to quit!{fontcolors.End}")
 
 
 

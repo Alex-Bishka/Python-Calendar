@@ -1,4 +1,19 @@
+import os
+
 todo = []
+dictCmds = {
+		"list": ("listTodo()", "list all of our todos"),
+		"add": ("addTodo()", "add a task to our list"),
+		"del": ("deleteTodo()", "remove a task from our list"),
+		"mod": ("modifyTodo()", "modify a task"),
+		"help": ("help", "gives more info on cmds"),
+		"q": ("NaF", "quits program"),
+	    }
+
+def setupTodo():
+	"""
+	"""
+	pass
 
 def listTodo():
 	"""
@@ -56,6 +71,8 @@ def addTodo():
 
 def modifyTodo():
 	"""
+	This function will modify a todo based on the type
+	of modification the user requests
 	"""
 	if isTodoEmpty():
 		return
@@ -85,6 +102,7 @@ def modifyTodo():
 
 def deleteTodo():
 	"""
+	remove todos based on the index passed in
 	"""
 	if isTodoEmpty():
 		return
@@ -106,22 +124,27 @@ def deleteTodo():
 
 def overviewTodo():
 	"""
+	kinda like an intro message to the program
 	"""
-	print("A todo is something you need to be reminded of!")
-	print("In order to create one, call the function add")
-	print("To see your todo list, call list")
-	print("To delete a todo call del!")
-	print("To quit, type q")
-	print("For more information call help")
+	print("Here is an overview of basic commands: \n")
+	print("\tTo look at your tasks enter the 'list' command.")
+	print("\tTo add a task use the 'add' command.")
+	print("\tTo remove a task use the 'del' command.\n")
+	print("For more information on commands call 'help'.")
 
 def help():
 	"""
+	gives more information on the commands possible
 	"""
-	print("Here is a list of functions:")
-	print("To learn more about a function, type its name and -h")
+	print("Here is a list of commands:\n")
+	for key in dictCmds:
+		print(f"\t{key}: {dictCmds[key][1]}")
+	print("\nTo learn more about a command, type its name and -h")
 
 def isTodoEmpty():
 	"""
+	a checker to see if we have any todos or not, returns a bool
+	based on todo being empty or not
 	"""
 	if len(todo) == 0:
 		print("\nThere are currently no tasks to be completed!")
@@ -132,6 +155,7 @@ def isTodoEmpty():
 
 if True:
 	"""
+	where the magic happens :)
 	"""
 	running = True
 	print("Welcome to calendar!\n")
